@@ -7,15 +7,12 @@ def binaryfinder(octet, binary, n):
     return octet, binary
 
 
+elevation2 = [128, 64, 32, 16, 8, 4, 2, 1]
+
+
 def octetconverter(octet, binary):
-    octet, binary = binaryfinder(octet, binary, 128)
-    octet, binary = binaryfinder(octet, binary, 64)
-    octet, binary = binaryfinder(octet, binary, 32)
-    octet, binary = binaryfinder(octet, binary, 16)
-    octet, binary = binaryfinder(octet, binary, 8)
-    octet, binary = binaryfinder(octet, binary, 4)
-    octet, binary = binaryfinder(octet, binary, 2)
-    octet, binary = binaryfinder(octet, binary, 1)
+    for n in elevation2:
+        octet, binary = binaryfinder(octet, binary, n)
     return binary
 
 
@@ -32,10 +29,8 @@ while True:
             print('octeto deve ser maior que 0!')
         else:
             binary = ""
-            binary += octetconverter(int(ip[0]), binary)
-            binary += octetconverter(int(ip[1]), binary)
-            binary += octetconverter(int(ip[2]), binary)
-            binary += octetconverter(int(ip[3]), binary)
+            for oct in ip:
+                binary += octetconverter(int(oct), binary)
             print(binary)
             break
     except ValueError:
