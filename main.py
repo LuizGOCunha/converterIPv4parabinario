@@ -16,10 +16,12 @@ def octetconverter(octet, binary):
     return binary
 
 
-print('Insira seu ip, com os pontos.')
+print('Insira seu ip, com os pontos (escreva exit para sair)')
 while True:
     try:
         ip = input('>')
+        if ip == "exit":
+            exit()
         ip = ip.split(".")
         if len(ip) != 4:
             print("Formato Ipv4 apenas!")
@@ -32,7 +34,7 @@ while True:
             for oct in ip:
                 binary += octetconverter(int(oct), binary)
             print(binary)
-            break
+
     except ValueError:
         print('Apenas números!')
     except IndexError:
