@@ -26,8 +26,10 @@ while True:
         ip = ip.split(".")
         if len(ip) != 4:
             print("Formato Ipv4 apenas!")
-        elif ip[0,1,2,3] > 255:
+        elif int(ip[0]) > 255 or int(ip[1]) > 255 or int(ip[2]) > 255 or int(ip[3]) > 255:
             print('octeto deve ser menor que 255!')
+        elif int(ip[0]) < 0 or int(ip[1]) < 0 or int(ip[2]) < 0 or int(ip[3]) < 0:
+            print('octeto deve ser maior que 0!')
         else:
             binary = ""
             binary += octetconverter(int(ip[0]), binary)
